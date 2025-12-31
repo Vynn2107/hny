@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy New Year</title>
+
+<style>
+body{
+    margin:0;
+    height:100vh;
+    font-family:'Poppins',sans-serif;
+    background:linear-gradient(180deg,#cfe9ff,#eaf6ff);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.card{
+    width:90%;
+    max-width:360px;
+    background:rgba(255,255,255,0.92);
+    border-radius:22px;
+    padding:20px;
+    text-align:center;
+    box-shadow:0 12px 25px rgba(0,0,0,0.12);
+    animation:fade .7s ease;
+}
+
+@keyframes fade{
+    from{opacity:0; transform:scale(.95)}
+    to{opacity:1; transform:scale(1)}
+}
+
+
+.photo{
+    width:70%;              
+    aspect-ratio:1 / 1;
+    object-fit:cover;
+    border-radius:14px;
+    margin:0 auto 12px auto;
+    display:block;
+    background:#e3f2ff;
+}
+
+h1{
+    color:#5fa8e8;
+    margin:8px 0;
+    font-size:22px;
+}
+
+p{
+    color:#4a6b8a;
+    font-size:14px;
+    line-height:1.6;
+}
+
+button{
+    margin-top:12px;
+    padding:11px 26px;
+    border:none;
+    border-radius:30px;
+    background:#8fc6ff;
+    color:white;
+    font-size:14px;
+    cursor:pointer;
+    transition:.3s;
+}
+
+button:hover{
+    background:#6fb4f7;
+    transform:scale(1.05);
+}
+
+.small-btn{
+    padding:8px 18px;
+    font-size:13px;
+    margin:6px;
+}
+
+.envelope{
+    width:150px;
+    height:100px;
+    background:#8fc6ff;
+    border-radius:14px;
+    margin:12px auto;
+    position:relative;
+    cursor:pointer;
+}
+
+.envelope:before{
+    content:"";
+    position:absolute;
+    width:0;height:0;
+    border-left:75px solid transparent;
+    border-right:75px solid transparent;
+    border-top:50px solid #b7ddff;
+    top:0; left:0;
+}
+
+.hidden{display:none;}
+</style>
+</head>
+<body>
+
+<div class="card">
+
+<div id="step1">
+    <img src="hachiware1.jpeg" class="photo">
+    <h1>Helloooooww</h1>
+    <p>Please tap the button :)</p>
+    <button onclick="next(2)">Tap 💌</button>
+</div>
+
+<div id="step2" class="hidden">
+    <img src="hachiware2.jpeg" class="photo">
+    <p>eeh.... let's try one more time</p>
+    <button class="small-btn" onclick="next(3)">Tap 💌</button>
+</div>
+
+<div id="step3" class="hidden">
+    <img src="hachiware3.jpeg" class="photo">
+    <p>hehe... actually i have something for you </p>
+    <p>do you want to open it?</p>
+    <button class="small-btn" onclick="openEnvelope()">Yes :)</button>
+    <button class="small-btn" onclick="moveNo(this)">No</button>
+</div>
+
+<div id="step4" class="hidden">
+    <div class="envelope" onclick="next(5)"></div>
+    <p>Tap the envelope please ✉️</p>
+</div>
+
+<div id="step5" class="hidden">
+    <img src="hachiware4.jpeg" class="photo">
+    <h1>💙 Happy New Year 💙</h1>
+    <p>
+              i don't really believe that every new year has to start with promises or resolutions, but i just want to say thank you so much for coming into my life and for making things feel better in ways that truly matter, i hope this year brings you joy, fulfills your wishes in its own time, and allows you to move forward without carrying yesterday's pain
+   <br> i'm not the type of person who always sends words like this, so i don't really know what to say at a moment like this, but i just want you to know that deep down i really... really love you and care so much about you </br>
+   <p> there are still many things i want to say, but the point is that i really hope that this year, all good things will come to you. 
+    <p>once again... love you so much</p>
+</p>
+</div>
+
+</div>
+
+<script>
+function next(step){
+    document.querySelectorAll('.card > div')
+        .forEach(d=>d.classList.add('hidden'));
+    document.getElementById('step'+step)
+        .classList.remove('hidden');
+}
+
+function openEnvelope(){
+    next(4);
+}
+
+function moveNo(btn){
+    btn.style.position="absolute";
+    btn.style.left=Math.random()*60+"%";
+    btn.style.top=Math.random()*60+"%";
+}
+</script>
+
+</body>
+</html>
